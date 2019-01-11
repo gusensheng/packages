@@ -1,0 +1,15 @@
+diff -Nur a/glib/gdate.c b/glib/gdate.c
+--- a/glib/gdate.c	2018-12-03 16:03:25.279717852 +0800
++++ b/glib/gdate.c	2018-12-03 16:05:39.847568080 +0800
+@@ -2494,8 +2494,10 @@
+        * recognize whether strftime actually failed or just returned "".
+        */
+       tmpbuf[0] = '\1';
++#pragma GCC diagnostic push
++#pragma GCC diagnostic ignored "-Wformat-nonliteral"
+       tmplen = strftime (tmpbuf, tmpbufsize, locale_format, &tm);
+-
++#pragma GCC diagnostic pop
+       if (tmplen == 0 && tmpbuf[0] != '\0')
+         {
+           g_free (tmpbuf);
