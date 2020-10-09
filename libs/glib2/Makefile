@@ -98,7 +98,7 @@ endef
 define Package/glib2/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) \
-		$(PKG_INSTALL_DIR)/usr/lib/*.so* \
+		$(PKG_INSTALL_DIR)/usr/lib/libglib*.so* \
 		$(1)/usr/lib/
 endef
 
